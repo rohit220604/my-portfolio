@@ -1,15 +1,18 @@
-// app/loading.jsx
 export default function Loading() {
-    return (
-      <div className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 z-50">
-        <div className="w-64 h-3 bg-blue-900/60 rounded-full overflow-hidden relative">
-          <div className="absolute left-0 top-0 h-full rounded-full animate-pulse bg-gradient-to-r from-blue-400 via-blue-600 to-purple-500" style={{ width: '60%' }} />
-          <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-3xl animate-bounce">🚀</span>
-        </div>
-        <div className="text-blue-100 text-xl font-mono mt-8">
-          Loading your awesomeness...
-        </div>
+  return (
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-blue-950 z-50">
+      <div className="relative w-32 h-32 flex items-center justify-center">
+        {/* Slow spin with 3s duration */}
+        <div className="absolute w-16 h-16 border-4 border-dashed border-blue-400 rounded-full animate-[spin_3s_linear_infinite]"></div>
+        {/* Normal spin with default 1s */}
+        <div className="absolute w-24 h-24 border-4 border-dashed border-blue-700 rounded-full animate-[spin_4s_linear_infinite]"></div>
+        {/* Another slow spin */}
+        <div className="absolute w-32 h-32 border-4 border-dashed border-blue-300 rounded-full animate-[spin_5s_linear_infinite]"></div>
+        <div className="w-8 h-8 bg-blue-700 rounded-full shadow-lg z-10"></div>
       </div>
-    );
-  }
-  
+      <div className="text-blue-100 text-xl font-mono mt-8 animate-pulse">
+        Loading...
+      </div>
+    </div>
+  );
+}

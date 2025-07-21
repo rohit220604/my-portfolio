@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-blue-950 shadow-lg py-4 px-6 flex justify-between items-center sticky top-0 z-50">
-      <span className="text-xl font-bold text-blue-300">[YourName].dev</span>
+      <span className="text-xl font-bold text-blue-300">RohitJaliminchi.dev</span>
       <div className="flex gap-6 items-center">
         {navItems.map((item) => (
           <Link key={item.href} href={item.href} className="hover:text-blue-400 transition-colors">

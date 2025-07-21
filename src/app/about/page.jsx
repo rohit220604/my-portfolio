@@ -2,8 +2,8 @@ export default function About() {
     return (
       <section className="flex flex-col md:flex-row items-center gap-8">
         <img
-          src="/profile.jpg"
-          alt="Your Name"
+          src="/image.jpg"
+          alt="Rohit Jaliminchi"
           className="w-40 h-40 rounded-full border-4 border-blue-700 shadow-lg"
         />
         <div>

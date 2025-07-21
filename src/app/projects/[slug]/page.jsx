@@ -1,5 +1,4 @@
 export default function ProjectDetail({ params }) {
-    // Replace with actual data fetching logic
     const project = {
       title: 'Funny Todo App',
       description: 'A todo app that roasts you if you procrastinate.',

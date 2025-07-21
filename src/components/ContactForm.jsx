@@ -1,15 +1,29 @@
-// EmailJS integration requires setup with your EmailJS account and public key
 'use client';
+
 import { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactForm() {
   const form = useRef();
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    // Replace with actual EmailJS logic
-    setSent(true);
+    setError(false);
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        form.current,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+      setSent(true);
+    } catch (err) {
+      setError(true);
+      setSent(false);
+    }
   };
 
   return (
@@ -20,10 +34,9 @@ export default function ContactForm() {
       <button
         type="submit"
         className="bg-blue-600 hover:bg-blue-700 rounded px-4 py-2 font-bold transition-colors"
-      >
-        Send 🚀
-      </button>
+      >Send 🚀</button>
       {sent && <span className="text-green-400 mt-2">Message sent! I’ll reply faster than my code compiles.</span>}
+      {error && <span className="text-red-400 mt-2">Something went wrong. Please try again.</span>}
     </form>
   );
 }
